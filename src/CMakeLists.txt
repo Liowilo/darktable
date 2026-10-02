@@ -847,7 +847,9 @@ include_directories(SYSTEM ${Pugixml_INCLUDE_DIRS})
 list(APPEND LIBS ${Pugixml_LIBRARIES})
 
 if(NOT SOURCE_PACKAGE)
-  add_definitions(-Werror -Wfatal-errors )
+  # -Werror dropped for local build: newer GCC (16) emits warnings the release
+  # was not vetted against, which would otherwise abort the build.
+  add_definitions(-Wfatal-errors )
 endif()
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
