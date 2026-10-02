@@ -132,6 +132,7 @@ const dt_iop_order_entry_t legacy_order[] = {
   { {35.0f }, "colortransfer", 0},
   { {36.0f }, "colormapping", 0},
   { {37.0f }, "bloom", 0},
+  { {37.0f }, "halation", 0},
   { {38.0f }, "nlmeans", 0},
   { {39.0f }, "globaltonemap", 0},
   { {40.0f }, "shadhi", 0},
@@ -275,6 +276,7 @@ const dt_iop_order_entry_t v30_order[] = {
   { {58.0f }, "vibrance", 0},        // same, but more subtle
   { {60.0f }, "colorzones", 0},      // same, but locally
   { {61.0f }, "bloom", 0},           // creative module
+  { {61.0f }, "halation", 0},        // creative module (custom)
   { {62.0f }, "colorize", 0},        // creative module
   { {63.0f }, "lowlight", 0},        // creative module
   { {64.0f }, "monochrome", 0},      // creative module
@@ -394,6 +396,7 @@ const dt_iop_order_entry_t v50_order[] = {
   { {58.0f }, "vibrance", 0},        // same, but more subtle
   { {60.0f }, "colorzones", 0},      // same, but locally
   { {61.0f }, "bloom", 0},           // creative module
+  { {61.0f }, "halation", 0},        // creative module (custom)
   { {62.0f }, "colorize", 0},        // creative module
   { {63.0f }, "lowlight", 0},        // creative module
   { {64.0f }, "monochrome", 0},      // creative module
@@ -515,6 +518,7 @@ const dt_iop_order_entry_t v30_jpg_order[] = {
   { { 58.0f }, "vibrance", 0 },         // same, but more subtle
   { { 60.0f }, "colorzones", 0 },       // same, but locally
   { { 61.0f }, "bloom", 0 },            // creative module
+  { { 61.0f }, "halation", 0 },         // creative module (custom)
   { { 62.0f }, "colorize", 0 },         // creative module
   { { 63.0f }, "lowlight", 0 },         // creative module
   { { 64.0f }, "monochrome", 0 },       // creative module
@@ -637,6 +641,7 @@ const dt_iop_order_entry_t v50_jpg_order[] = {
   { { 58.0f }, "vibrance", 0 },         // same, but more subtle
   { { 60.0f }, "colorzones", 0 },       // same, but locally
   { { 61.0f }, "bloom", 0 },            // creative module
+  { { 61.0f }, "halation", 0 },         // creative module (custom)
   { { 62.0f }, "colorize", 0 },         // creative module
   { { 63.0f }, "lowlight", 0 },         // creative module
   { { 64.0f }, "monochrome", 0 },       // creative module
