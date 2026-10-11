@@ -117,6 +117,7 @@ const dt_iop_order_entry_t legacy_order[] = {
   { {27.5f }, "censorize", 0},
   { {27.5f }, "negadoctor", 0},
   { {27.5f }, "blurs", 0},
+  { {27.5f }, "halation", 0},        // film halation, scene-referred linear RGB (custom)
   { {27.5f }, "basicadj", 0},
   { {27.5f }, "primaries", 0},
   { {28.0f }, "colorreconstruct", 0},
@@ -132,7 +133,6 @@ const dt_iop_order_entry_t legacy_order[] = {
   { {35.0f }, "colortransfer", 0},
   { {36.0f }, "colormapping", 0},
   { {37.0f }, "bloom", 0},
-  { {37.0f }, "halation", 0},
   { {38.0f }, "nlmeans", 0},
   { {39.0f }, "globaltonemap", 0},
   { {40.0f }, "shadhi", 0},
@@ -224,6 +224,7 @@ const dt_iop_order_entry_t v30_order[] = {
                                      // after scanner input color
                                      // profile
   { {28.5f }, "blurs", 0},           // physically-accurate blurs (motion and lens)
+  { {28.5f }, "halation", 0},        // film halation, scene-referred linear RGB (custom)
   { {28.5f }, "primaries", 0},
   { {29.0f }, "nlmeans", 0},         // signal processing (denoising)
                                      //    -> needs a signal as scene-referred as possible (even if it works in Lab)
@@ -276,7 +277,6 @@ const dt_iop_order_entry_t v30_order[] = {
   { {58.0f }, "vibrance", 0},        // same, but more subtle
   { {60.0f }, "colorzones", 0},      // same, but locally
   { {61.0f }, "bloom", 0},           // creative module
-  { {61.0f }, "halation", 0},        // creative module (custom)
   { {62.0f }, "colorize", 0},        // creative module
   { {63.0f }, "lowlight", 0},        // creative module
   { {64.0f }, "monochrome", 0},      // creative module
@@ -344,6 +344,7 @@ const dt_iop_order_entry_t v50_order[] = {
                                      // after scanner input color
                                      // profile
   { {28.5f }, "blurs", 0},           // physically-accurate blurs (motion and lens)
+  { {28.5f }, "halation", 0},        // film halation, scene-referred linear RGB (custom)
   { {28.5f }, "primaries", 0},
   { {29.0f }, "nlmeans", 0},         // signal processing (denoising)
                                      //    -> needs a signal as scene-referred as possible (even if it works in Lab)
@@ -396,7 +397,6 @@ const dt_iop_order_entry_t v50_order[] = {
   { {58.0f }, "vibrance", 0},        // same, but more subtle
   { {60.0f }, "colorzones", 0},      // same, but locally
   { {61.0f }, "bloom", 0},           // creative module
-  { {61.0f }, "halation", 0},        // creative module (custom)
   { {62.0f }, "colorize", 0},        // creative module
   { {63.0f }, "lowlight", 0},        // creative module
   { {64.0f }, "monochrome", 0},      // creative module
@@ -463,6 +463,7 @@ const dt_iop_order_entry_t v30_jpg_order[] = {
   { { 28.5f }, "censorize", 0 },
   { { 28.5f }, "negadoctor", 0 },   // Cineon film encoding comes after scanner input color profile
   { { 28.5f }, "blurs", 0 },        // physically-accurate blurs (motion and lens)
+  { { 28.5f }, "halation", 0 },     // film halation, scene-referred linear RGB (custom)
   { { 28.5f }, "primaries", 0},
   { { 29.0f }, "nlmeans", 0 },      // signal processing (denoising)
                                     //    -> needs a signal as scene-referred as possible (even if it works in Lab)
@@ -518,7 +519,6 @@ const dt_iop_order_entry_t v30_jpg_order[] = {
   { { 58.0f }, "vibrance", 0 },         // same, but more subtle
   { { 60.0f }, "colorzones", 0 },       // same, but locally
   { { 61.0f }, "bloom", 0 },            // creative module
-  { { 61.0f }, "halation", 0 },         // creative module (custom)
   { { 62.0f }, "colorize", 0 },         // creative module
   { { 63.0f }, "lowlight", 0 },         // creative module
   { { 64.0f }, "monochrome", 0 },       // creative module
@@ -586,6 +586,7 @@ const dt_iop_order_entry_t v50_jpg_order[] = {
   { { 28.5f }, "censorize", 0 },
   { { 28.5f }, "negadoctor", 0 },   // Cineon film encoding comes after scanner input color profile
   { { 28.5f }, "blurs", 0 },        // physically-accurate blurs (motion and lens)
+  { { 28.5f }, "halation", 0 },     // film halation, scene-referred linear RGB (custom)
   { { 28.5f }, "primaries", 0},
   { { 29.0f }, "nlmeans", 0 },      // signal processing (denoising)
                                     //    -> needs a signal as scene-referred as possible (even if it works in Lab)
@@ -641,7 +642,6 @@ const dt_iop_order_entry_t v50_jpg_order[] = {
   { { 58.0f }, "vibrance", 0 },         // same, but more subtle
   { { 60.0f }, "colorzones", 0 },       // same, but locally
   { { 61.0f }, "bloom", 0 },            // creative module
-  { { 61.0f }, "halation", 0 },         // creative module (custom)
   { { 62.0f }, "colorize", 0 },         // creative module
   { { 63.0f }, "lowlight", 0 },         // creative module
   { { 64.0f }, "monochrome", 0 },       // creative module
@@ -738,6 +738,7 @@ void dt_ioppr_migrate_legacy_iop_order_list(GList *iop_order_list)
   _insert_before(iop_order_list, "enlargecanvas", "overlay");
   _insert_before(iop_order_list, "colorbalance", "diffuse");
   _insert_before(iop_order_list, "nlmeans", "blurs");
+  _insert_before(iop_order_list, "nlmeans", "halation");
   _insert_before(iop_order_list, "filmicrgb", "sigmoid");
   _insert_before(iop_order_list, "filmicrgb", "agx");
   _insert_before(iop_order_list, "colorbalancergb", "colorequal");
